@@ -1,0 +1,161 @@
+@charset "utf-8";
+/* CSS Document */
+
+.radio{
+    display: inline-block;
+    margin: 0px;
+}
+
+.navbar-default{
+    background: none;
+    border: none;
+
+}
+.navbar-brand{
+    height: auto;
+    padding: 0px;
+    padding-left: 60px;
+}
+.nav>li{
+    margin-top: 18px;
+}
+
+.navbar-default .navbar-nav > li > a{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px !important;
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
+    color: #e2673a;
+}
+
+.form-control{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    padding: 20px 20px;
+    font-size: 20px;
+    line-height: normal;
+    color: #918c8c;
+    border-radius: 7px;
+    border: 2px solid #d3d3d3;
+    height: auto;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border: 2px solid #e2673a;
+ 
+}
+.radio{
+    margin-right: 10px;
+}
+.radio span{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #545454;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{
+    margin-top: 8px;
+}
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: #FFF;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+    background-color: #C54B4B;
+}
+
+.navbar-toggle{
+    margin-top: 30px;
+}
+
+.img-responsive{
+    display: inline-block;
+}
+.carousel-control.right{
+    background: none;
+    z-index: 2;
+}
+
+.carousel-control.left{
+    background: none;
+    z-index: 2;
+}
+
+.modal-dialog{
+    width: 35%;
+margin: 100px auto;
+    border: none;
+}
+
+.modal-content{
+    background:url(../images/geometry.png) ;
+    border: none;
+    box-shadow: 0 13px 37px rgba(0, 0, 0, 0.52);
+
+}
+
+.modal-backdrop.in{
+    opacity: 0.8;
+    
+}
+
+.modal-header{
+    border: none;
+    padding: 0px;
+    border: none;
+}
+
+.modal-header .close{
+    margin-top: 10px;
+margin-right: 10px;
+}
+.btn-lg, .btn-group-lg > .btn{
+    font-size: 17px;
+}
+
+
+.btn-danger{
+    background: #dd4b39;
+}
+
+@media screen and (max-width: 1400px) {
+    
+    .modal-dialog{
+    width: 50%;
+}
+}
+
+@media screen and (max-width: 767px) {
+    .modal-dialog{
+    width: 90%;
+
+}
+    .navbar-default{
+        background: #e2673a;
+        border: none;
+
+    }
+    
+    .navbar-brand{
+        padding-bottom: 20px;
+        padding-top: 20px;
+        padding-left: 20px;
+}
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
+    color: #fff;
+        text-decoration: underline;
+}
+}
+
+
+
+
+
+
+
+
