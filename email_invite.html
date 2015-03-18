@@ -1,0 +1,75 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Invitation for Jiffy Registration</title>
+</head>
+<body style="background: none repeat scroll 0 0 #f7f7f7;">
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="88" align="center" valign="middle"><img src="http://jiffynow.in/images/logo.png"></td>
+  </tr>
+  <tr>
+    <td height="237" align="center" valign="middle" style="background:url(http://jiffynow.in/images/banner.jpg) no-repeat;  "><span style=" color: #fff; font-family:Verdana, Geneva, sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 rgba(150, 150, 150, 0.62);">You have been Invited! </span></td>
+  </tr>
+  <tr>
+    <td height="105" align="center" valign="middle" bgcolor="#FFFFFF" style="padding-top:30px; padding-bottom:30px;  color: #5d5d5d;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size: 18px;
+  ">All your real estate hassles are taken away <br>
+      by your friend, <span style="color: #e2673a;">	{% autoescape off %}
+				 {{ referree_name }}
+				{% endautoescape %}</span> <br>
+      <br>
+      {{ referree_name }} gave you <strong style="color: #e2673a;">Rs 1000</strong> off on your first transaction with <br>
+      Jiffy and earning Rs 2000 for himself. <br>
+      <br>
+      <strong>Be sure to say thanks to  him!</strong></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle" bgcolor="#FFFFFF"><a href="{{ referral_hash }}" style=" background-color: #e16739;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+    text-decoration: none;">Claim your Rs.1000 credit</a></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle" style=" padding-bottom:10px; padding-top:10px; color: #a7a1a1;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;">*The discount will be automatically added on your  first transaction with jiffy. <br>
+      Registration is easy and only takes a few minutes. <br>
+      If you have any questions or concerns, reach out to the Jiffy Support Team by emailing <br>
+      <a href="file:///E:/web/jiffy/email/Email%20Html/Email%20Html/index.html#">connect@jiffynow.in</a></td>
+  </tr>
+  <tr>
+    <td align="center" valign="bottom"><img src="http://jiffynow.in/images/social.png" usemap="#Map"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<map name="Map">
+  <area shape="circle" coords="16,16,14" href="https://www.facebook.com/pages/Jiffy/729331573803643">
+  <area shape="circle" coords="62,16,13" href="https://twitter.com/thinkjiffy" class="twitter-icon">
+  <area shape="circle" coords="110,16,14" href="https://plus.google.com/112976258096807027265">
+ <area shape="circle" coords="156,16,13" href="#">
+  <area shape="circle" coords="202,16,13" href="#">
+  <area shape="circle" coords="250,15,14" href="#">
+  <area shape="circle" coords="296,16,14" href="#">
+</map>
+</body>
+</html>

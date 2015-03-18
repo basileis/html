@@ -1,14 +1,19 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JiffyNow</title>
+    <meta name="description" content="Real Estate and Home Renting in Pune">
+    <meta name="keyword" content="jiffy, realestate, pune, home, house, renting,
+    rent, apartment, jiffynow, reality, tenant, owners">
+    <title>Jiffy : Home Renting Experts of Pune</title>
 
     <!-- Bootstrap -->
-      <link rel="stylesheet" href="css/bootstrap.css" >
-      <link rel="stylesheet" href="css/bootstrapValidator.css">
+      <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+      <link rel="stylesheet" href="css/basic-template.css" type="text/css" />
+      <link rel="stylesheet" href="css/bootstrapValidator.css" type="text/css" />
       <link rel="stylesheet" href="css/bootstrap-overwrite.css" >
       <link rel="stylesheet" href="css/custom.css" >
       <link rel="stylesheet" href="css/font.css" >
@@ -17,101 +22,242 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    
-    <script src="js/bootstrapValidator.js"></script>
-      
-      
-      <script>
-function isNumberKey(evt){
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    return true;
-}    
-</script>
-      
-      
-<script type="text/javascript">
-	$(document).ready(function () {
-		var validator = $("#registration-form").bootstrapValidator({
-			feedbackIcons: {
-				valid: "glyphicon glyphicon-ok",
-				invalid: "glyphicon glyphicon-remove", 
-				validating: "glyphicon glyphicon-refresh"
-			}, 
-			fields : {
-				email :{
-					message : "Email address is required",
-					validators : {
-						notEmpty : {
-							message : "Please provide an email address"
-						}, 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>  
+	<script src= "https://apis.google.com/js/client.js" type="text/javascript"></script>
+	<script src="js/bootstrapValidator.js" type="text/javascript"></script>
+	<script>
+   function get_user_data() {
+        var data = '';
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var email = document.getElementById("email").value;
+        var location = document.getElementById("location").value;
+        var type;
 
-						emailAddress: {
-							message: "Email address was invalid"
-						}
-					}
-				}, 
-                
-				FullName :{
-					message : "full name is required",
-					validators : {
-						notEmpty : {
-							message : "Please enter your full name"
-						}, 
+        if (document.getElementById('owner').checked){
+            type = 1;
+        }else if(document.getElementById('tenant').checked){
+            type = 2;
+        }else if(document.getElementById('both').checked){
+            type = 3 ;
+        }
+        data = '{"name":"'+name+'",';
+        data += '"email":"'+email+'",';
+        data += '"phone":"'+phone+'",';
+        data += '"type":"'+type+'",';
+        data += '"location":"'+location+'",';
+        data += '"friends":[' + ']}'
+        return data;
+    }
 
-						name: {
-							message: "full name was invalid"
-						}
-					}
-				},
-                
-				PhoneNumber :{
-					message : "Phone number is required",
-					validators : {
-						notEmpty : {
-							message : "Please enter your phone number"
-						}, 
-                        
-                      stringLength: {
-							min : 10, 
-							max: 10,
-							message: "Phone number must be 10 characters long"
-						},
+    function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
 
-						Number: {
-							message: "Phone number was invalid"
-						}
-					}
-				},
-                
-				PreferredLocation :{
-					message : "Location is required",
-					validators : {
-						notEmpty : {
-							message : "Please enter your Preferred Location"
-						}, 
-                        
+$(document).ready(function () {
+    var validator = $("#registration-form").bootstrapValidator({
+        feedbackIcons: {
+            valid: "glyphicon glyphicon-ok",
+            invalid: "glyphicon glyphicon-remove",
+            validating: "glyphicon glyphicon-refresh"
+        },
+        fields : {
+            email :{
+                message : "Email address is required",
+                validators : {
+                    notEmpty : {
+                        message : "Please provide an email address"
+                    },
 
-						location: {
-							message: "location was invalid"
-						}
-					}
-				},
+                    emailAddress: {
+                        message: "Email address was invalid"
+                    }
+                }
+            },
+
+            name :{
+                message : "full name is required",
+                validators : {
+                    notEmpty : {
+                        message : "Please enter your full name"
+                    },
+
+                    name: {
+                        message: "full name was invalid"
+                    },
+                    regexp: {
+                        regexp: '^[a-zA-Z_ ]*$',
+                        message: "Full Name should not be numeric"
+                    }
+                }
+            },
+
+            phone :{
+                message : "Phone number is required",
+                validators : {
+                    notEmpty : {
+                        message : "Please enter your phone number"
+                    },
+
+                    stringLength: {
+                        min : 10,
+                        max: 10,
+                        message: "Phone number must be 10 characters long"
+                    },
+
+                    Number: {
+                        message: "Phone number was invalid"
+                    },
+                    regexp: {
+                        regexp: '^[1-9][0-9]*$',
+                        message: "Phone No. should not start with 0"
+                    }
+
+                }
+            },
+
+            location :{
+                message : "Location is required",
+                validators : {
+                    notEmpty : {
+                        message : "Please enter your Preferred Location"
+                    },
 
 
-			}
-		});
-	
-		validator.on("success.form.bv", function (e) {
-			e.preventDefault();
-			$("#registration-form").addClass("hidden");
-			$("#confirmation").removeClass("hidden");
-		});
-		
-	});
+                    location: {
+                        message: "location was invalid"
+                    },
+                    regexp: {
+                        regexp: '^[a-zA-Z_ ]*$',
+                        message: 'Location name should not be numeric'
+                    }
+                }
+            }
+
+
+        }
+    });
+
+    validator.on("success.form.bv", function (e) {
+        e.preventDefault();
+        $("#registration-form").addClass("hidden");
+        $("#confirmation").removeClass("hidden");
+    });
+
+});
+
+function auth() {
+    var config = {
+        'client_id': '397136943925-e5osdulomodovq12vdr4b3rcuumclvtk.apps.googleusercontent.com',
+        'scope': 'https://www.google.com/m8/feeds'
+    };
+    gapi.auth.authorize(config, function() {
+        fetch(gapi.auth.getToken());
+    });
+}
+function fetch(token) {
+    $.ajax({
+        url: "https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token  + "&max-results=70000&alt=json" + "&callback=?",
+        dataType: "jsonp",
+        success:function(data) {
+            contacts = [];
+            for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
+                var contact = {
+                    'name' : entry['title']['$t'],
+                    'id' : entry['id']['$t'],
+                    'emails' : [],
+                    'phoneNumber' : []
+                };
+
+                if (entry['gd$email']) {
+                    var emails = entry['gd$email'];
+                    for (var j = 0, email; email = emails[j]; j++) {
+                        contact['emails'].push(email['address']);
+                    }
+                }
+                if (entry['gd$phoneNumber']) {
+                    var phoneNumber = entry['gd$phoneNumber'];
+                    for (var j = 0, phone; phone = phoneNumber[j]; j++) {
+                        contact['phoneNumber'].push(phone['$t']);
+
+                    }
+                }
+                if (!contact['name']) {
+                    contact['name'] = contact['emails'][0] || "<Unknown>";
+                }
+                contacts.push(contact);
+            }
+            numContacts = contacts.length;
+            friend_list_json_str = '';
+            for(var j=0;j<numContacts;j++) {
+                name = (contacts[j])['name'];
+                emails = (contacts[j])['emails'];
+                phone = (contacts[j])['phoneNumber'];
+                email_list= '';
+                phone_list= '';
+                for(var k=0;k<emails.length;k++) {
+                    email_list += '"'+emails[k] + '",' ;
+                }
+                email_list += email_list.substring(0, email_list.length -1)
+
+                for(var k=0;k<phone.length;k++) {
+                    phone_list += '"'+phone[k] + '",';
+                }
+                phone_list += phone_list.substring(0, phone_list.length -1)
+
+                friend_json_str = '';
+                friend_json_str += '{"name":"'+name + '",';
+                friend_json_str += '"emails":['+email_list+'],';
+                friend_json_str += '"phoneNumber":['+phone_list+']' ;
+                friend_json_str += '},';
+                friend_list_json_str += friend_json_str;
+            }
+            friend_list_json_str = friend_list_json_str.substring(0, friend_list_json_str.length - 1);
+
+            var user_data = get_user_data();
+            var len = user_data.length;
+            user_data = user_data.substring(0, len - 2);
+            user_data += friend_list_json_str + ']}';
+            data = "invite_data="+ user_data
+            url = '/invite';
+            var posting = $.post( url, data );
+
+            posting.done(function( response_data ) {
+            });
+        }
+    });
+}
+
+
+function registerUser(){
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var location = document.getElementById("location").value;
+    var type;
+
+    if (document.getElementById('owner').checked){
+        type = 1;
+    }else if(document.getElementById('tenant').checked){
+        type = 2;
+    }else if(document.getElementById('both').checked){
+        type = 3 ;
+    }
+    data = "name="+name;
+    data += "&email="+email;
+    data += "&phone="+phone;
+    data += "&type="+type;
+    data += "&location="+location;
+    url = '/signup';
+    var posting = $.post( url, data );
+
+    posting.done(function( data_1 ) {
+    });
+};
+
 </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -186,46 +332,32 @@ function isNumberKey(evt){
       
       <div class="carousel-caption">
       <div class="width100p">
-                        <h1 class="color-white">
-                            Now renting a home will much more easy
-                            <br>
-                            than doing online shopping.
-                        </h1>
-                        <a class="btn-orange margin-top30px" href="#jiffynow">Jiffy Now</a>
-                    </div>
-      </div>
-    </div>
+                    <h1 class="color-white">Sign up and experience the power of renting<br />
+                        the right home among millions !</h1><a class="btn-orange margin-top30px"
+                                                               href="#jiffynow">Jiffy Now</a>
+                </div>
+            </div>
+        </div>
     
-      <div class="item itemBg2 ">
+        <div class="item itemBg2">
+            <div class="carousel-caption">
+                <div class="width100p">
+                    <h1 class="color-white">Your very own special dream home<br />
+                        Just like the French Castle of your dreams !</h1><a class= "btn-orange margin-top30px" href="#jiffynow">Jiffy Now</a>
+                </div>
+            </div>
+        </div>
       
-      <div class="carousel-caption">
-      <div class="width100p">
-                        <h1 class="color-white">
-                           Involve with Jiffy and get ready to
-                            <br>
-                            experience great things.
-                        </h1>
-                        <a class="btn-orange margin-top30px" href="#jiffynow">Jiffy Now</a>
-                    </div>
-      </div>
+        <div class="item itemBg3">
+            <div class="carousel-caption">
+                <div class="width100p">
+                    <h1 class="color-white">Complete with romantic balcony,<br />
+                        Absolutely perfect !</h1><a class="btn-orange margin-top30px" href=
+                        "#jiffynow">Jiffy Now</a>
+                </div>
+            </div>
+        </div>
     </div>
-      
-      <div class="item itemBg3 ">
-      
-      <div class="carousel-caption">
-      <div class="width100p">
-                        <h1 class="color-white">
-                           Every moment in your next house is
-                             <br>
-                            going to be jiffy moment!
-                        </h1>
-                        <a class="btn-orange margin-top30px" href="#jiffynow">Jiffy Now</a>
-                    </div>
-      </div>
-    </div>
-      
-    
-  </div>
 
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -251,26 +383,18 @@ function isNumberKey(evt){
                 </div>
                 <div class="col-sm-7 ">
                     <div class="width100p">
-                    <h1 class="color-orange">
-                       About Jiffy 
-                    </h1>
+                    <h1 class="color-orange">Jiffy Prelaunch in Pune</h1>
                     </div>
                     <div class="width100p color-light-gray">
                     <p>
-                    Jiffy is next generation platform for reality domain. We are a team of highly qualified and 
-                    </p>
-                    <p>
-                    experienced team of property lifecycle management experts. We know the pulse of reality market 
-                    </p>
-                    <p>
-                    and customer needs. Jiffy is the medium to redefine the face of real estate transactions and 
-                    </p>
-                    <p>
-                    removing the pain of customers in the home renting experience. It is the perfect blend of today’s 
-                    </p>
-                    <p>
-                    technology with real estate and brings owners and tenants on the same platform.
-                    </p>
+                <p>Jiffy pre-launch registration and invites have started. This is absolutely
+                    right moment to get yourself involved with jiffy and fulfill all your immediate
+                    or upcoming renting needs. If you help your friend by introducing him/her to
+                    jiffy and sending an invite , you will have chance to earn money too.</p>
+
+                <p>Being a jiffy member you will be able to rent-out/rent-in your home with
+                    ease. Jiffy consists of team of professionals who know how to help you in
+                    finding the right home or tenant for your home.</p>
                     </div>
                 </div>
             </div>
@@ -285,24 +409,19 @@ function isNumberKey(evt){
                     <p class=" strong-paragraph">Discover great places to live around you.</p>
                 </div>
             </div>
-            <div class="panel-body">
-            <form id="registration-form" method="POST">
+           <form action="http://jiffynow.in" autocomplete="on" id=
+                "registration-form" method="post">
             <div class="row">
                 <div class="col-sm-3 col-sm-offset-3">
                     <div class="form-group">
-						
-						
-							<input type="text" class="form-control" id="FullName" name="FullName" placeholder="Full Name" />
-                            
-                        </div>
+                        <input type="text" class="form-control" id="name" name="name" size="50" placeholder="Full Name" />
+                  </div>
                 </div>
                 <div class="col-sm-3 ">
                     <div class="form-group">
-						
-						
-							<input type="text" class="form-control" id="email" name="email" placeholder="Email address" />
-                            
-                        </div>
+                        <input type="text" class="form-control" id="email" name="email" size="50"
+                               placeholder="Email address" />
+                  </div>
                 </div>
            
                 
@@ -317,45 +436,47 @@ function isNumberKey(evt){
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="PhoneNumber" onkeypress="return isNumberKey(event)" name="PhoneNumber" placeholder="Phone Number" /> 
-                       
+                        <input type="text" class="form-control" id="phone" onkeypress=
+                                "return isNumberKey(event)" name="phone" sixe="50" placeholder=
+                                       "Phone Number" />
                     </div>
                 </div>
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="form-group">
-                         <input type="text" class="form-control" id="PreferredLocation" name="PreferredLocation" placeholder="Preferred Location" />
+                        <input type="text" class="form-control" id="location" name=
+                                "location" size="50" placeholder="Preferred Location" />
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 text-center">
+                <div class="col-sm-12 text-center" id="userType">
                     <div class="radio">
                       <label>
-                        <input type="radio" name="optionsRadios" id="Owner" value="option1" checked>
-                        <span>Owner</span>
+                        <label><input type="radio" name="optionRadios" id="owner" value="1"
+                                      checked /> <span>Owner</span></label>
                       </label>
                         </div>
                     <div class="radio">
                       <label>
-                        <input type="radio" name="optionsRadios" id="Tenant" value="option1" checked>
-                        <span>Tenant</span>
+                        <label><input type="radio" name="optionRadios" id="tenant" value="2"
+                                      checked/> <span>Tenant</span></label>
                       </label>
                     </div>
                     
                      <div class="radio">
                       <label>
-                        <input type="radio" name="optionsRadios" id="Both" value="option1" checked>
-                        <span>Both</span>
+                        <label><input type="radio" name="optionRadios" id="both" value="3"
+                                      checked/> <span>Both</span></label>
                       </label>
                     </div>
                 
             </div>
         </div>
-            </div>
-        <div class="row">
-            <div class="col-sm-12 text-center margin-top20px">
-                <a class="btn-orange" data-toggle="modal" data-target="#myModal">Jiffy Now</a>
-            </div>
+            
+    <div class="row">
+        <div class="col-sm-12 text-center margin-top20px">
+            <a class="btn-orange" data-toggle="modal" data-target="#myModal">Jiffy Now</a>
+        </div>
             
             
         <!-- Modal -->
@@ -378,7 +499,7 @@ function isNumberKey(evt){
                     
                     and Earn Referral Money
                     
-                        up-to 5000/-
+                        upto 5000/-
 <br>
                    
                     Invite them to Jiffy
@@ -389,7 +510,7 @@ function isNumberKey(evt){
                 
               </div>
               <div class="modal-body text-center">
-                  <a href="#"><img src="images/gplus.png" data-dismiss="modal"  class="img-responsive"></a>
+                  <a onclick="auth();"><img src="images/gplus.png" data-dismiss="modal" class="img-responsive"></a>
              <br>
                   
               </div>
@@ -412,7 +533,7 @@ function isNumberKey(evt){
                             <li> <a href="#jiffynow"> Sign Up </a></li>      
                         </ul>
                     </div>
-                    <div class="width100p"><span>(C)2014 Jiffynow .in</span></div>
+                    <div class="width100p"><span>(C)2015 Jiffynow .in</span></div>
                 </div>
                 <div class="col-sm-4">
                       <ul class="social-icon">
@@ -428,11 +549,5 @@ function isNumberKey(evt){
             </div>
         </div>
     </footer>
-        
-        
-      
-
-       
-   
   </body>
 </html>
