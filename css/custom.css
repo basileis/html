@@ -223,7 +223,9 @@ footer span{
 }
 
 /*buttons end*/
-
+.howWeWorkBg{
+    background:url(../images/furnishBG.png) top left ;
+}
 /*margin*/
 
 
@@ -247,6 +249,11 @@ footer span{
 /*padding*/
 .padding-bottom0{
 padding-bottom: 0px;
+}
+
+.paddingTopBottom100{
+    padding-bottom: 100px;
+    padding-top: 100px;
 }
 /*padding end*/
 

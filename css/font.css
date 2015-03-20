@@ -36,6 +36,21 @@ p{
     padding-bottom: 25px;
 }
 
+.text-how-we-work h3{
+
+ 
+    font-size: 16px;
+    margin-bottom: 10px;
+        margin-top: 10px;
+
+}
+
+.text-how-we-work p{
+   
+ 
+    font-size: 14px;
+
+}
 
 .strong-paragraph{
     font-family: 'Open Sans', sans-serif;
