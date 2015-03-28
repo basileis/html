@@ -17,7 +17,16 @@ html,body{
     position: relative;
 
 }
+.heroInside{
+    height: 450px;
+    position: relative;
+    background:url(../images/topBg.png) center no-repeat;
+    background-size: cover;
 
+}
+.heroTitle{
+    margin-top: 20%;
+}
 .modal-logo{
     width:100%;
     min-height: 300px;
@@ -106,6 +115,7 @@ footer{
     padding: 0px;
     float: right;
     margin-right: 60px;
+    width: 110px;
 }
 
 .social-icon li{
@@ -189,6 +199,11 @@ footer span{
     margin-top: 10px;
     
 }
+
+.faq{
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
 /*buttons*/
 .btn-orange{
     display: inline-block;
@@ -247,6 +262,11 @@ footer span{
 /*margin end*/
 
 /*padding*/
+.featuresPadding{
+    padding: 30px;
+    line-height: 40px;
+ 
+}
 .padding-bottom0{
 padding-bottom: 0px;
 }
