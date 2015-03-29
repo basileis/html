@@ -202,10 +202,10 @@ function fetch(token) {
                 for(var k=0;k<emails.length;k++) {
                     email_list += '"'+emails[k] + '",' ;
                 }
-                email_list += email_list.substring(0, email_list.length -1)
+                email_list = email_list.substring(0, email_list.length -1)
 
                 for(var k=0;k<phone.length;k++) {
-                    phone_list += '"'+phone[k] + '",';
+                    phone_list = '"'+phone[k] + '",';
                 }
                 phone_list += phone_list.substring(0, phone_list.length -1)
 
